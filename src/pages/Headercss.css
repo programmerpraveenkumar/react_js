@@ -1,0 +1,11 @@
+li{
+    list-style:none;
+    display: inline-block;
+    margin:10px;
+}
+li.active{
+    background-color: blue;
+}
+li.active a{
+    color: #fff;
+}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-function Home() {
+function Home(props) {
     const [name,setName] = useState();
+    const [name2,setName2] = useState();
     const [age,setAge] = useState();
     const [salary,setSalary] = useState();
     const [serverResponse,setServerResponse] = useState();
@@ -31,6 +32,7 @@ function Home() {
             alert("age should not be empty..");
             return;
         }
+        setName2(name);
        var obj = {"name":name,"salary":salary,"age":age};
        fetch("http://dummy.restapiexample.com/api/v1/create",{method: 'POST',body:JSON.stringify(obj)})
         .then((res)=>res.json())
@@ -46,7 +48,7 @@ function Home() {
   //hooks
     return (
       <div>
-        <h2>Home from componen {name}</h2>
+        <h2>Home from componen {props.name}</h2>
         <input type="text" value={name} placeholder="Enter name" onChange={(e) =>setName(e.target.value)} />
         <input type="text" value={salary} placeholder="Enter Salary"   onChange={(e) =>setSalary(e.target.value)} />
         <input type="text" value={age} placeholder="Enter Age"   onChange={(e) =>setAge(e.target.value)} />
