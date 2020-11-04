@@ -18,29 +18,70 @@ function Home(props) {
    const handleChange=(value)=>{
       setName(value);
    }
+   const errorApiHandle=()=>{
+     //eror in api from server
+     //promise
+     fetch("http://localhost:8080/contact/get/error")
+     .then((res)=>{
+       if(res.status == 200){
+         res.json().then(serverRes=>{
+           setServerResponse(serverRes.message); 
+           setName('');
+           setSalary('');
+           setAge('');
+         })
+       }else{
+         //promise 
+         res.json().then(error=>{
+           console.log(error)
+           alert("Error "+error);
+         }).catch(error=>{
+            console.log(error)
+            alert("Error  parsing response.....");
+        })
+       }
+     } 
+     ).catch(error=>{
+       console.log(error)
+         alert("Error  in api calling...");
+     })
+   }
    const sendDataToapi=()=>{
+      errorApiHandle();
        console.log("value of name is",name);
-       if(name == ""){
+       if(name == "" || name == undefined){
            alert("name should not be empty..");
            return;
        }
-       if(salary == ""){
+       if(salary == "" || salary == undefined){
         alert("salary should not be empty..");
         return;
         }
-        if(age == ""){
+        if(age == "" || age == undefined){
             alert("age should not be empty..");
             return;
         }
-        setName2(name);
+       // setName2(name);
        var obj = {"name":name,"salary":salary,"age":age};
        fetch("http://dummy.restapiexample.com/api/v1/create",{method: 'POST',body:JSON.stringify(obj)})
-        .then((res)=>res.json())
         .then((res)=>{
-            setServerResponse(res.message); 
-            setName('');
-            setSalary('');
-            setAge('');
+          if(res.status == 200){
+            res.json().then(serverRes=>{
+              setServerResponse(serverRes.message); 
+              setName('');
+              setSalary('');
+              setAge('');
+            })
+          }else{
+            res.text().then(error=>{
+              console.log(error)
+              //alert("Error "+error);
+            })
+          }
+        } 
+        ).catch(error=>{
+          console.log(error)
+            alert("Error  in api calling...");
         })
    }
    

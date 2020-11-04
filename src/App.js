@@ -55,7 +55,7 @@ function App() {
     </div>
     {/* <Home name={name}/>
     <About name={name}/> */}
-    <Header currentmenu={currentmenu}></Header>
+    <Header></Header>
      <Switch>
          <Route exact path="/">
             <Home />
@@ -76,11 +76,7 @@ function App() {
             <p>this is router for dashboard</p>
           
           </Route>
-          
-          
         </Switch>
-      
-      {currentmenu}
     </div>
     </Router>
   );

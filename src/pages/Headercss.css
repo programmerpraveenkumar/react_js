@@ -3,9 +3,7 @@ li{
     display: inline-block;
     margin:10px;
 }
-li.active{
+li a.active{
     background-color: blue;
-}
-li.active a{
     color: #fff;
 }
