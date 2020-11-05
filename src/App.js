@@ -4,6 +4,7 @@ import './App.css';
 import Home from './Home';
 import About from './About';
 import Dashboard from './pages/Dashboard'
+import Loop from './pages/Loops';
 import Header from './pages/Header'
 import {
   BrowserRouter as Router,
@@ -59,6 +60,7 @@ function App() {
      <Switch>
          <Route exact path="/">
             <Home />
+            <Loop/>
           </Route>
           <Route exact path="/home">
             <Home />
