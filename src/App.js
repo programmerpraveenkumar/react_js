@@ -5,7 +5,10 @@ import Home from './Home';
 import About from './About';
 import Dashboard from './pages/Dashboard'
 import Loop from './pages/Loops';
-import Header from './pages/Header'
+import Header from './pages/Header';
+import LocalstoragePage from './pages/LocalstoragePage';
+import  ApiHeaderPages from './pages/ApiHeaderPages';
+import ConditionclassPages from './pages/ConditionclassPages';
 import {
   BrowserRouter as Router,
   Switch,
@@ -76,6 +79,18 @@ function App() {
           <Route exact path="/pages/dashboard">
             <Dashboard />
             <p>this is router for dashboard</p>
+          
+          </Route>
+          <Route exact path="/pages/localstorage">
+            <LocalstoragePage />
+          
+          </Route>
+          <Route exact path="/pages/ApiHeader">
+            <ApiHeaderPages />
+          
+          </Route>
+          <Route exact path="/pages/conditionclass">
+            <ConditionclassPages />
           
           </Route>
         </Switch>

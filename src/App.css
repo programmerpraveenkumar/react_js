@@ -17,10 +17,38 @@
   color: #000;
   text-decoration: line-through;
 }
+.todo-wrapper .deleteIcon{
+  color: red;
+    cursor: pointer;
+    display: inline;
+    margin-left: 10px;
+    text-decoration: underline;
+    font-weight: bold;
+}
 .border-content .title{
   font-size: 1em;
   text-decoration: underline;
   color:#61dafb;
+}
+div.blue{
+  background-color: blue;
+}
+div.red{
+  background-color: red;
+}
+div.green{
+  background-color: green;
+}
+div.black{
+  background-color: black;
+}
+.red-color{
+  color: red;
+  background-color: rgb(30, 80, 10);
+}
+.blue-color{
+  background-color: black;
+  color: blue;
 }
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

@@ -13,17 +13,47 @@ export default function Loop(){
             // let tmp = arrayinputList;
             // tmp.push(arrayInput)
             // console.log(tmp);
-            let obj = {"name":arrayInput,"status":"complete"}
+            let obj = {"name":arrayInput,"status":"incomplete"}
             setArrayinputList([...arrayinputList,obj]);
+            setArrayInput('');//clearing input
         }else{
             alert("Please enter some value");
         }
     }
-    const toggleTask=(e)=>{
-        let tmp = arrayinputList.filter(obj=>obj.key == e).forEach(obj=>obj.status="complete")
-        console.log(tmp)
-        //setArrayinputList(tmp);
+    const toggleTask=(checkBoxIndex)=>{
+        //filter->filtering(remove) the array based on values
+   // let tmp = arrayinputList.filter((obj,index)=>index == e).map(obj=>{obj.status = 'complete';return obj});        
+   //let tmp = arrayinputList.map((value,index)=>{if(index  == e){(value.status =='complete' )?'complete':'incomplete';}return value});        
+   let tmp = arrayinputList.map((value,index)=>{
+       if(index  == checkBoxIndex){
+           //!true
+            if(value.status == 'incomplete'){
+                value.status = 'complete'
+            }
+            else{
+                value.status = 'incomplete'
+            }
+        }
+        return value
+    });        
+            console.log(tmp);
+        setArrayinputList(tmp);
        
+    }
+    const deleteTodo=(key)=>{
+        if(window.confirm("Are you wanna delete this task..?")){
+            let tmp = arrayinputList.filter((obj,index)=>index != key)
+            setArrayinputList(tmp); 
+        }
+      
+    }
+    const saveAllTaskToApi=()=>{
+        if(arrayinputList.length <=0){
+            alert("please add atleast one task...");
+            return;
+        }
+        console.log(arrayinputList);
+        //send to api....
     }
     return (<div>
         <div className="todo-wrapper border-content">
@@ -32,13 +62,17 @@ export default function Loop(){
             <input type="button" value="CLick to add Array" onClick={addDatatoArrayFromInput}/>
             { arrayinputList.map((value,key)=>{
             return(
+                // conditional class
                 <div className={value.status} key={key}>
-                   <input onClick={()=>toggleTask(key)} type="checkbox"/> {value.name+" "+value.status}
+                   <input onClick={()=>toggleTask(key)} type="checkbox"/> {value.name+" "+value.status}<p onClick={()=>deleteTodo(key)} className="deleteIcon">Del</p>
                 </div>
+                
             )
+         
         })
             
             }
+            <div><input type="button" onClick={saveAllTaskToApi} value="Save all"/></div>
               </div>
         <div className="border-content">
         <p className="title">Array</p>
@@ -55,6 +89,7 @@ export default function Loop(){
             { peopleDetails.map((value,key)=>{
             return(
                 <div key={key}>{value.name+"--"+value.age+"--"+value.id}</div>
+                
             )
         })
             
