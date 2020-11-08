@@ -9,6 +9,7 @@ import Header from './pages/Header';
 import LocalstoragePage from './pages/LocalstoragePage';
 import  ApiHeaderPages from './pages/ApiHeaderPages';
 import ConditionclassPages from './pages/ConditionclassPages';
+import  {TestProvider} from './ContextTest';
 import {
   BrowserRouter as Router,
   Switch,
@@ -49,6 +50,7 @@ function App() {
   },[chattext])
   //
   return (
+    <TestProvider>
      <Router>
     <div className="App">
       
@@ -96,6 +98,7 @@ function App() {
         </Switch>
     </div>
     </Router>
+    </TestProvider>
   );
 }
 

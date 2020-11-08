@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import {ContextTest} from './ContextTest';
 function Home(props) {
     const [name,setName] = useState();
     const [name2,setName2] = useState();
     const [age,setAge] = useState();
     const [salary,setSalary] = useState();
+    const contxtValue = useContext(ContextTest);
     const [serverResponse,setServerResponse] = useState();
+    
     //2nd param->empty array will work like oninit in function component
     useEffect(function(){
         console.log("lifecycle..");
@@ -14,7 +17,9 @@ function Home(props) {
         onafteroninit->after contct loads in the page
         ngdestroy->before page gets destroy.
     */
-
+    const updateContextValueFortest = ()=>{
+      contxtValue.setName('updated in homecomponent');
+    }
    const handleChange=(value)=>{
       setName(value);
    }
@@ -48,6 +53,7 @@ function Home(props) {
    }
    const sendDataToapi=()=>{
       errorApiHandle();
+      updateContextValueFortest();
        console.log("value of name is",name);
        if(name == "" || name == undefined){
            alert("name should not be empty..");
@@ -89,6 +95,7 @@ function Home(props) {
   //hooks
     return (
       <div>
+        <h2>value is from {contxtValue.name}</h2>
         <h2>Home from componen {props.name}</h2>
         <input type="text" value={name} placeholder="Enter name" onChange={(e) =>setName(e.target.value)} />
         <input type="text" value={salary} placeholder="Enter Salary"   onChange={(e) =>setSalary(e.target.value)} />
