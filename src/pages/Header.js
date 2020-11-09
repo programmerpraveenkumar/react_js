@@ -8,13 +8,13 @@ export default function Header(props){
     return(
    <div>
       value is from context {contxtValue.name}
-<ul>
-    
+<ul>    
     <li><NavLink activeClassName="active" to="/home">Home</NavLink></li>
     <li><NavLink activeClassName="active"  to="/pages/dashboard">dashboard</NavLink></li>
     <li><NavLink activeClassName="active" to="about">About</NavLink></li>
     <li><NavLink activeClassName="active" to="/pages/localstorage">Localstorage</NavLink></li>
     <li><NavLink activeClassName="active" to="/pages/ApiHeader">ApiHeader</NavLink></li>
     <li><NavLink activeClassName="active" to="/pages/conditionclass">Condition class</NavLink></li>
+    <li><NavLink activeClassName="active" to="/pages/emp/">Employee Details</NavLink></li>
     </ul></div>)
 }

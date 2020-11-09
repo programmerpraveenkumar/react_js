@@ -16,6 +16,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import EmpDetail from './pages/EmpDetail';
 //npm install react-router-dom
 function App() {
   const[name,setName]= useState('');
@@ -93,6 +94,10 @@ function App() {
           </Route>
           <Route exact path="/pages/conditionclass">
             <ConditionclassPages />
+          
+          </Route>
+          <Route exact path="/pages/emp/:emp_id">
+            <EmpDetail />
           
           </Route>
         </Switch>
