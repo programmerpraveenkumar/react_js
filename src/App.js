@@ -10,6 +10,7 @@ import LocalstoragePage from './pages/LocalstoragePage';
 import  ApiHeaderPages from './pages/ApiHeaderPages';
 import ConditionclassPages from './pages/ConditionclassPages';
 import  {TestProvider} from './ContextTest';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -70,35 +71,27 @@ function App() {
           </Route>
           <Route exact path="/home">
             <Home />
-            <p>this is router for HOme</p>
-           
+            <p>this is router for HOme</p>           
           </Route>
           <Route exact path="/about">
             <About />
             <p>this is router for About</p>
-           
-          </Route>
-          
+          </Route>          
           <Route exact path="/pages/dashboard">
             <Dashboard />
-            <p>this is router for dashboard</p>
-          
+            <p>this is router for dashboard</p>          
           </Route>
           <Route exact path="/pages/localstorage">
-            <LocalstoragePage />
-          
+            <LocalstoragePage />          
           </Route>
           <Route exact path="/pages/ApiHeader">
-            <ApiHeaderPages />
-          
+            <ApiHeaderPages />          
           </Route>
           <Route exact path="/pages/conditionclass">
             <ConditionclassPages />
-          
           </Route>
           <Route exact path="/pages/emp/:emp_id">
             <EmpDetail />
-          
           </Route>
         </Switch>
     </div>

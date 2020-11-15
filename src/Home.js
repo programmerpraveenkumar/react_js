@@ -5,7 +5,8 @@ function Home(props) {
     const [name2,setName2] = useState();
     const [age,setAge] = useState();
     const [salary,setSalary] = useState();
-    const contxtValue = useContext(ContextTest);
+    //const contxtValue = useContext(ContextTest);
+    const[contxtWithRecuer,dispatch] = useContext(ContextTest);
     const [serverResponse,setServerResponse] = useState();
     
     //2nd param->empty array will work like oninit in function component
@@ -18,7 +19,8 @@ function Home(props) {
         ngdestroy->before page gets destroy.
     */
     const updateContextValueFortest = ()=>{
-      contxtValue.setName('updated in homecomponent');
+      //contxtValue.setName('updated in homecomponent');
+     //dispatch({"type":"dec"})
     }
    const handleChange=(value)=>{
       setName(value);
@@ -95,7 +97,13 @@ function Home(props) {
   //hooks
     return (
       <div>
-        <h2>value is from {contxtValue.name}</h2>
+        {/* <h2>value is from {contxtValue.name}</h2> */}
+        <div>
+        <h2>Use Reduvcer</h2>
+        <button onClick={()=> dispatch({"type":"inc"})}>click to add</button>
+          value is from {contxtWithRecuer}
+        <button onClick={()=> dispatch({"type":"dec"})}>click to Sub</button>
+          </div>
         <h2>Home from componen {props.name}</h2>
         <input type="text" value={name} placeholder="Enter name" onChange={(e) =>setName(e.target.value)} />
         <input type="text" value={salary} placeholder="Enter Salary"   onChange={(e) =>setSalary(e.target.value)} />
